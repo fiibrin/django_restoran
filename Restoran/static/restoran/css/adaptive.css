@@ -1,0 +1,39 @@
+/* @media only screen and (max-width:10000px){
+    .container{
+        max-width: 5000px;
+    }
+}
+@media only screen and (max-width:5000px){
+    .container{
+        max-width: 3000px;
+    }
+}
+
+@media only screen and (max-width:2000px){
+    .container{
+        max-width: 1200px;
+    }
+}
+
+@media only screen and (max-width:1400px){
+    .container{
+        max-width: 800px;
+    }
+}
+
+@media only screen and (max-width: 1000px){
+    .container{
+        max-width: 600px;
+    }
+
+}
+@media only screen and (max-width:800px){
+    .container{
+        max-width: 400px;
+    }
+}
+@media only screen and (max-width:600px){
+    .container{
+        max-width: 200px;
+    }
+} */

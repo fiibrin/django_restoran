@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'restoran/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'restoran/css/adaptive.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+{% block mainmenu %}
+        <div class="container">
+            <div class="navbar">
+                <div class="nav_bar">
+                    {% for m in menu1 %}
+                        {% if m.url_name == menu_selected %}
+                            <a href="{% url m.url_name %}" class="text_nav" id="selected_nav">{{m.title}}</a>
+                        {% else %}
+                            <a href="{% url m.url_name %}" class="text_nav">{{m.title}}</a>
+                        {% endif %}
+
+                    {% endfor %}
+
+                            <img src="{% static 'restoran/image/лого.png' %}" class="logo_nav">
+
+                    {% for m in menu2 %}
+                        {% if m.url_name == menu_selected %}
+                            <a href="{% url m.url_name %}" class="text_nav" id="selected_nav">{{m.title}}</a>
+                        {% else %}
+                            <a href="{% url m.url_name %}" class="text_nav">{{m.title}}</a>
+                        {% endif %}
+                    {% endfor %}
+                    <a class='cart_link' href="{% url "cart:cart_detail" %}">
+                    <img src="{%static 'restoran/image/cartimg.png' %}" class='cart_img'>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+{% endblock mainmenu %}
+
+{% block content %}
+{% endblock %}
+    <script src="{% static 'restoran/js/script.js' %}"></script>
+</body>
+</html>

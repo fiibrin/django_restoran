@@ -1,0 +1,105 @@
+{% extends 'restoran/base.html' %}
+{% load static %}
+    {% block content%}
+
+        <div class="intro">
+
+                <div class="intro_about">
+                    <div id="intro">
+                        <div class="poloska_title">
+                            <div class="poloska"></div>
+                            <p class="text_poloska">
+                                Welcome to <br/>restaurant bar <br/>
+                            </p>
+                        </div>
+                        <div class="intro_title_block">
+                            <h3 class="intro_title">Name</h3>
+                            <h2 class="intro_restaurant">Restaurant</h2>
+                        </div>
+                    </div>
+                    <div class="resorvation">
+                        <button href="#" class="box_reservation">
+                            <p>MAKE A RESERVATION</p>
+                        </button>
+                    </div>
+                </div>
+            <img src="{% static 'restoran/image/intro-start.png' %}" class="intro-img">
+        </div>
+            <div class="about reveal box-2">
+                <div class="about_img">
+                    <img src="{% static 'restoran/image/aboutus.png' %}"/>
+                </div>
+                <div class="about_block">
+                    <div class="about_polosa"></div>
+                    <p class="about_title">About us</p>
+                    <p class="about_text">У нас вы встретите прекрасную атмосферу,<br>
+                        отличные блюда от наших поваров и<br> 
+                        отзывчивое обслуживание.  </p>
+                </div>
+            </div>
+        <div class="slider_div">
+        <div class="slider reveal box-3">
+            <div class="arrow_left" id="prev" onclick="previousSlide()">
+                <div alt="prev"></div>
+            </div>
+            <div class="preview">
+                <img class="slider_preview" src="{% static 'restoran/image/интерьеринтро3.webp' %}" alt="">
+                <img class="slider_preview" src="{% static 'restoran/image/интерьер интро 4.jpg' %}" alt="">
+                <img class="slider_preview" src="{% static 'restoran/image/интерьер интро 2.jpg' %}" alt="">
+                <img class="slider_preview" src="{% static 'restoran/image/интерьер интро.webp' %}" alt="">
+            </div>
+            <div class="arrow_right" id="next" onclick="nextSlide()">
+                <div alt="next"></div>
+            </div>
+        </div>
+    </div>
+        <div class="poloska_slider">
+            <div class="poloska_under"></div>
+        </div>
+        <div class="container reveal box-4">
+            <div class="menu">
+                <p class="menu_title">MENU</p>
+                <div class="menu_index">
+                    <div class="ani">
+                        <div class="animate"><img src="{% static 'restoran/image/харчо каталог.png' %}"></div>
+                        <div class="in__animate"><p class="catalog_title">Харчо</p></div>
+                    </div>
+                    <div class="ani">
+                        <div class="animate"><img src="{% static 'restoran/image/болоньезе каталог 2.png' %}"></div>
+                        <div class="in__animate"><p class="catalog_title">Болоньезе</p></div>
+                    </div>
+                    <div class="ani">
+                        <div class="animate"><img src="{% static 'restoran/image/азиатская каталог 2.png' %}"></div>
+                        <div class="in__animate"><p class="catalog_title">Поке</p></div>
+                    </div>         
+                </div>
+                <button class='cart_btn' style = 'background-color: #000; margin-top:10px;'><a href="{% url 'menu' %}"><p>К меню</p></a></button>
+            </div>
+        </div>
+        <form>
+            <div class="reservation reveal box-5">
+                <div class="res">
+                    <p class="reservation_title">reservation</p>
+                    <div class="parametr_res1">
+                        <p>Имя</p>
+                        <input class='form_input_res'>
+                    </div>
+                    <div class="parametr_res2">
+                        <p>Номер телефона</p>
+                        <input class='form_input_res'>
+                    </div>
+                    <div class="parametr_res3">
+                        <p>Время брони</p>
+                        <input class='form_input_res'>
+                    </div>
+                    <div class="parametr_res4">
+                        <p>Кол-во персон</p>
+                        <input class='form_input_res'>
+                    </div>
+                    <button class="button">
+                        <p>Отправить</p>
+                    </button>
+                </div>
+            </div>
+        </form>
+    {% endblock content%}

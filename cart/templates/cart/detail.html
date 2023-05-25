@@ -1,0 +1,57 @@
+{% extends 'restoran/base.html' %}
+{% load static %}
+
+{% block title %}
+    ShopCart
+{% endblock %}
+
+{% block content%}
+<div class='container'>
+    <h1 class='cart_title'>Корзина</h1>
+    <table class='cart'>
+        <thead>
+            <tr>
+                <th>Изображение</th>
+                <th>Блюдо</th>
+                <th>Кол-во</th>
+                <th>Удалить</th>
+                <th>Цена</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+                {% with product=item.product %}
+                    <tr class='cart_item'>
+                        <td>
+                            <a href='{{ product.get_abosolute_url}}'>
+                            <img src="
+                                {% if product.photo %}
+                                    {{ product.photo.url }}
+                                {% endif %}" class='cart_img'>
+                            </a>
+                        </td>
+                        <td> {{ product.title }} </td>
+                        <td> {{ item.quantity }} </td>
+                        <td> <a href="{% url "cart:cart_remove" product.id %}">Удалить</a> </td>
+                        <td class='num' colspan='5'> {{item.price}} </td>
+                        <td class='num'> {{item.total.price}} </td>
+                    </tr>
+                    {% endwith %}
+                {% endfor %}
+                <tr class='total'>
+                    <td>Общая стоимость</td>
+                    <td colspan='3'></td>
+                    <td class='num'> {{cart.get_total_price}} </td>
+                </tr>
+            </tbody>
+    </table>
+    <p class='text_right'>
+        <button class='cart_btn' style = 'background-color: #000;'><a href="{% url 'menu' %}"><p>К меню</p></a></button>
+        <button class='cart_btn'>
+            <a href="{% url "orders:order_create" %}" class=''><p>Продолжить</p>
+           
+            </a>
+        </button>
+    </p>
+</div>
+{% endblock content %}

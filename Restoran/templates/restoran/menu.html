@@ -1,0 +1,49 @@
+{% extends 'restoran/base.html' %}
+{% load static %}
+
+    {% block content%}
+    
+<div class="cart_list">
+    {% with total_items=cart|length %}
+        {% if cart|length > 0 %}
+            <a href="{% url "cart:cart_detail" %}">
+                {{ total_items }} блюда,
+                {{ cart.get_total_price }}р.
+            </a>
+        {% else %}
+            Корзина пуста.
+        {% endif %}
+    {% endwith %}
+</div>
+<p class="menu_title">MENU</p>
+<div class='container'>
+    <div class="menu">
+        <div class="menu_slider">
+            {% for ct in catalog %}
+            <form action="{% url "cart:cart_add" ct.id %}" method='post'>
+                <div class="ani">
+                    <div class="animate"><img src="{{ ct.photo.url }}"></div>
+                    <div class="in__animate">
+                        <p class="catalog_title">{{ct.title}}</p>
+                        <p class="catalog_content">{{ct.content|truncatechars:75}}</p>
+                        <div class="price_bnt_cat"><p class="price_cat">{{ct.price}} р.</p>
+                        {{ cart_product_form }}
+                        </div>
+                        {% csrf_token %}
+                        <input class="catalog_btn" type='submit' value='В корзину'></input>
+                    </div>
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+    <div class="category">
+        <div>
+
+        </div>
+    </div>
+
+
+
+    {% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'Restoran/base.html' %}
+{% load static %}
+{% block title %} Заказ {% endblock %}
+
+{% block content %}
+{% comment %} <img src="{% static "restoran/image/Кухня фон.jpg" %}" class="order"> {% endcomment %}
+<div class='container2'>
+    <h1>Заказ</h1>
+    <div class='order_site'>
+        <div class='form_order'>
+            <form action="." method="post" class="order_form">
+                {{ form.as_p }}
+                <p><input type="submit" value="Заказать" class='order_bnt'></p>
+                {% csrf_token %}
+            </form>
+        </div>
+        <div class="order-info">
+            <h3>Ваш заказ</h3>
+            <ul>
+                {% for item in cart %}
+                    <li>
+                        {{ item.quantity }}x {{ item.product.title }}
+                        <span>{{ item.total_price }}р.</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p>Стоимость: {{ cart.get_total_price }}р.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
